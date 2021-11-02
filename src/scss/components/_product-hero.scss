@@ -1,0 +1,120 @@
+@use "../utils/variables"as *;
+
+.product-hero {
+
+    .container {
+        padding: 0;
+
+        @media(min-width: $lg) {
+            padding: 50px 20px 0 20px;
+        }
+    }
+
+    .product {
+        display: flex;
+        flex-direction: column;
+
+        @media(min-width: $lg) {
+            flex-direction: row;
+        }
+
+        .slider {
+            position: relative;
+    
+            .product-image {
+                img {
+                    max-height: 300px;
+                    width: 100%;
+                    object-fit: cover;
+                    object-position: 50% 0;
+
+                    @media (min-width: $sm) {
+                        max-height: 500px;
+                    }
+                }
+            }
+    
+            .slider-controls {
+    
+                .slider-next,
+                .slider-previous {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    background-color: $white;
+                    height: 40px;
+                    width: 40px;
+                    padding: 10px;
+                    border-radius: 100%;
+                    top: 50%;
+                    transform: translateY(-50%);
+    
+                    svg {
+                        margin-right: 0;
+                    }
+                }
+    
+                .slider-next {
+                    right: 15px;
+                }
+    
+                .slider-previous {
+                    left: 15px;
+                }
+            }
+        }
+    
+        .product-info {
+            padding: 0 20px;  
+            display: flex;
+            flex-direction: column;
+            
+            @media(min-width: 840px) {
+                flex-direction: row;
+                align-items: flex-end;
+            }
+
+            .product-price {
+                display: flex;
+                align-items: center;
+    
+                @media(min-width: 840px) {
+                    justify-content: flex-end;
+                    padding-left: 100px;
+                }
+            
+                h2 {
+                    margin-right: 20px;
+                }
+            
+                .discount-prices {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex: 1;
+    
+                    @media(min-width: 840px) {
+                        flex-direction: column;
+                        flex: 0;
+                    }
+            
+                    .discount {
+                        background-color: $pale;
+                        border-radius: 5px;
+                        
+                        h5 {
+                            margin: 0;
+                            padding: 5px;
+                        }
+                    }
+                
+                    span {
+                        color: $grayishBlue;
+                        text-decoration: line-through;
+                    }
+                }
+            }  
+        }
+    }       
+}

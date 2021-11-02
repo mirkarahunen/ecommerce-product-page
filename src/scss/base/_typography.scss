@@ -1,0 +1,92 @@
+// typography rules and typography helper classes
+// typography rules and typography helper classes
+@use "../utils/variables" as *;
+
+body {
+    font-size: 15px;
+    font-family: 'Kumbh Sans', sans-serif;
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-weight: 700;
+        
+    }
+
+    h1 {
+        font-size: 26px;
+        line-height: 32px;
+        
+        
+        @media (min-width: $md) {
+            
+            
+        }
+    }
+
+    h2 {
+        font-size: 24px;
+        line-height: 32px;
+       
+        
+        @media(min-width: $md) {
+            font-size: 30px;
+            line-height: 39px;
+
+        }
+    }
+
+    h3 {
+        font-size: 22px;
+        line-height: 16px;
+
+        @media(min-width: $md) {
+            font-size: 26px;
+            line-height: 24px;
+        }
+    }
+
+    h4 {
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    h5 {
+        color: $orange;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+
+        @media (min-width: $md) {
+            
+        }
+
+    }
+
+
+    p {    
+        color: $darkGrayishBlue;
+        line-height: 24px;
+
+        @media(min-width: $sm) {
+            
+        }
+
+        @media (min-width: $md) {
+            
+        }
+    }
+
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
+        
+
+        
+    }
+
+    
+
+}
