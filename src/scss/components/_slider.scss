@@ -1,0 +1,80 @@
+@use "../utils/variables"as *;
+
+.slider,
+.modal-slider {
+    position: relative;
+
+    .product-image {
+
+        img {
+            max-height: 300px;
+            width: 100%;
+            object-fit: cover;
+            object-position: 50% 0;           
+        }
+    }
+
+    .modal-product-image {
+        img {
+            max-width: 500px;
+            object-fit: cover;
+            object-position: 50% 0;
+        }
+    }
+
+    .slider-controls {
+
+        .slider-next,
+        .slider-previous,
+        .modal-slider-next,
+        .modal-slider-previous {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            background-color: $white;
+            height: 60px;
+            width: 60px;
+            padding: 10px;
+            border-radius: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+
+            img {
+                margin-right: 0;
+            }
+        }
+
+        .slider-next {
+            right: 15px;
+        }
+
+        .slider-previous {
+            left: 15px;
+        }
+
+        .modal-slider-next {
+            right: -30px;
+
+            svg {
+               path {
+                   &:hover {
+                       stroke: $orange;
+                   }
+               } 
+            }
+        }
+
+        .modal-slider-previous {
+            left: -30px;
+
+            svg {
+                path {
+                    &:hover {
+                        stroke: $orange;
+                    }
+                } 
+             }
+        }
+    }
+}
