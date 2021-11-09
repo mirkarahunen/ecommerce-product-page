@@ -1,0 +1,197 @@
+@use "../utils/variables"as *;
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding-bottom: 15px;
+    padding-right: 20px;
+
+    @media(min-width: $lg) {
+        border-bottom: 1px solid $grayishBlue;
+        padding-bottom: 40px;
+        padding-right: 0;
+    }
+        
+
+    nav,
+    .account {
+        display: flex;
+        align-items: center;
+    }
+
+    nav {        
+        .burger {
+            padding-top: 4px;
+            position: relative;
+            padding: 25px 30px 25px 25px;
+            z-index: 300;
+            margin-left: 5px;
+
+            .line-1,
+            .line-2,
+            .line-3 {
+                position: absolute;
+                width: 15px;
+                height: 3px;
+                background-color: $darkGrayishBlue;
+                transition: all .5s ease;
+                top: 50%;
+                z-index: 300;
+                left: 40%;
+            }
+
+            .line-2 {
+                transform: translateY(-6px);
+            }
+
+            .line-3 {
+                transform: translateY(6px);
+            }
+
+            @media(min-width: $lg) {
+                display: none;
+            }
+
+            .line-1.show {
+                transform: rotate(40deg);
+            }
+
+            .line-3.show {
+                transform: rotate(-40deg);
+            }
+
+            .line-2.show {
+                opacity: 0;
+            }
+        }
+
+        .mobile {
+            height: 100%;
+            background-color: $white;
+            z-index: 200;
+            top: 0;
+            transform: translateX(-100%);
+            bottom: 0;
+            position: fixed;
+            padding-top: 60px;
+            animation: slideOutLeft .5s ease ; 
+            visibility: hidden;
+            transition-delay: 0.5s;
+            width: 70%;
+
+            &.show {
+                animation: slideInLeft 1s ease;
+                transform-origin: 0;
+                transform: translateX(0);
+                visibility: visible;
+                transition: visibility .1s ease;
+                    
+            }
+
+            li {
+                padding: 20px 20px;
+            }
+
+            .nav-link {
+                color: $black;
+                font-weight: 700;
+
+                &:hover {
+                    color: $orange;
+                }
+            }
+        }
+
+        .menu-bg {
+            background-color: rgba($color: $black, $alpha: 0.75);
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            transform: translateX(400%);
+            position: fixed;
+            z-index: 200;
+            animation: slideOutRight 1s ease;
+            width: 35%;
+            visibility: hidden;
+            transition-delay: 0.5s;
+
+            &.show {
+                animation: slideInRight 1s ease;
+                transform: translateX(200%);
+                visibility: visible;
+                transition: visibility .1s ease;
+            }
+        }
+
+        .desktop {
+            display: none;
+
+            @media(min-width: $lg) {
+                display: block;
+            }
+
+            ul {
+                display: flex;
+                align-items: center;
+
+                &:first-child {
+                    margin-left: 35px;
+                }
+
+                .nav-link {
+                    margin: 0 10px;
+                    color: $darkGrayishBlue;
+                    position: relative;
+                    padding: 45px 10px;
+
+                    &::after {
+                        position: absolute;
+                        content: "";
+                        width: 0;
+                        height: 4px;
+                        background-color: $orange;
+                        left: 0;
+                        bottom: -12px;
+                        transition: 0.5s;
+                    }
+
+                    &:hover {
+                        color: $black;
+
+                        &::after {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .account {
+    
+        .avatar {
+            cursor: pointer;
+            max-width: 25px;
+            position: relative;
+            margin-right: 5px;
+
+            @media(min-width: $lg) {
+                max-width: 50px;
+                margin-right: 0;
+            }
+
+            &:hover::after {
+                content: "";
+                border: 3px solid $orange;
+                display: block;
+                position: absolute;
+                width: 100%;
+                border-radius: 50%;
+                height: 100%;
+                bottom: 0;
+            }
+        }
+    }
+}
