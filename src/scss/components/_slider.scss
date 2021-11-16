@@ -3,6 +3,7 @@
 .splide {
     position: relative;
     cursor: pointer;
+    max-width: 445px;
 
     .splide__track {
         @media(min-width: $lg) {
@@ -87,10 +88,6 @@
 }
 
 #slider2 {
-    .splide__arrow--next,
-    .splide__arrow--prev {
-        top: 35%;
-    }
 
     .splide__arrow--next {
         right: -30px;
@@ -98,5 +95,53 @@
 
     .splide__arrow--prev {
         left: -30px;
+    }
+}
+
+#thumbnail-slider,
+#modal-thumbnail-slider {
+    margin-top: 45px;
+
+    .splide__arrows {
+        display: none;
+    }
+
+    .splide__track {
+        .splide__list {
+            .splide__slide {
+                opacity: 0.3;
+                overflow: hidden;
+    
+                &.is-active {
+                    opacity: 1;
+                    border: 3px solid $orange;
+                    border-radius: 10px;
+                }   
+
+                .image {
+                    transition: transform .5s ease;
+                    
+
+                    img {
+                        border-radius: 5px;
+                    }
+
+                    &:hover {
+                        transform: scale(1.1);
+                        opacity: 0.6;  
+                    }
+                }
+            }    
+        }
+    }
+}
+
+#modal-thumbnail-slider {
+    .splide__track {
+        .splide__list {
+            .splide__slide {
+                opacity: 0.6;
+            }    
+        }
     }
 }
