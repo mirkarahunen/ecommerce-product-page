@@ -111,7 +111,10 @@
                 </div>
                 <!-- User avatar -->
                 <button class="avatar">
-                    <img src="./img/image-avatar.png" alt="user-avatar"/>
+                    <picture>
+                        <source srcset="./img/image-avatar.webp" type="image/webp"/>
+                        <img src="./img/image-avatar.png" alt="user-avatar"/>
+                    </picture>
                 </button>
             </div>
         </header>
@@ -120,18 +123,68 @@
         <main>
             <section class="product-hero">
                 <div class="product">
-                    <div class="splide" id="slider1">
-                        <div class="splide__track">
-                              <div class="splide__list">
-                                  <img class="splide__slide" src="./img/image-product-1.jpg" alt="slider-image-1"/>
-                                  <img class="splide__slide" src="./img/image-product-2.jpg" alt="slider-image-2"/>
-                                  <img class="splide__slide" src="./img/image-product-3.jpg" alt="slider-image-3"/>
-                                  <img class="splide__slide" src="./img/image-product-4.jpg" alt="slider-image-4"/>
-                              </div>
+                    <div class="splide__wrapper">
+                        <div class="splide" id="slider1">
+                            <div class="splide__track">
+                                <div class="splide__list">
+                                    <picture class="splide__slide" >
+                                        <source srcset="./img/image-product-1.webp" type="image/webp" />
+                                        <img src="./img/image-product-1.jpg" alt="slider-image-1"/>
+                                    </picture>
+                                    <picture class="splide__slide">
+                                        <source srcset="./img/image-product-2.webp" type="image/webp" />
+                                        <img src="./img/image-product-2.jpg" alt="slider-image-2"/>
+                                    </picture>
+                                    <picture class="splide__slide">
+                                        <source srcset="./img/image-product-3.webp" type="image/webp" />
+                                        <img src="./img/image-product-3.jpg" alt="slider-image-3"/>
+                                    </picture>
+                                    <picture class="splide__slide">
+                                        <source srcset="./img/image-product-4.webp" type="image/webp" />
+                                        <img src="./img/image-product-4.jpg" alt="slider-image-4"/>
+                                    </picture>
+                                </div>
+                            </div>
                         </div>
-                        <div class="thumbnail-images"></div>
+                        <div id="thumbnail-slider" class="splide">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="splide__slide">
+                                        <div class="image">
+                                            <picture>
+                                                <source srcset="./img/image-product-1-thumbnail.webp" type="image/webp" />
+                                                <img src="./img/image-product-1-thumbnail.jpg" alt="thumbnail-image-1">
+                                            </picture>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide">
+                                        <div class="image">
+                                            <picture>
+                                                <source srcset="./img/image-product-2-thumbnail.webp" type="image/webp" />
+                                                <img src="./img/image-product-2-thumbnail.jpg" alt="thumbnail-image-2">
+                                            </picture>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide">
+                                        <div class="image">
+                                            <picture>
+                                                <source srcset="./img/image-product-3-thumbnail.webp" type="image/webp" />
+                                                <img src="./img/image-product-3-thumbnail.jpg" alt="thumbnail-image-3">
+                                            </picture>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide">
+                                        <div class="image">
+                                            <picture>
+                                                <source srcset="./img/image-product-4-thumbnail.webp" type="image/webp" />
+                                                <img src="./img/image-product-4-thumbnail.jpg" alt="thumbnail-image-4">
+                                            </picture>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-
                     <div class="product-info">
                         <div class="product-name">
                             <h5>
@@ -209,22 +262,77 @@
                     <path transform="scale(1.5)" d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="#69707D" fill-rule="evenodd"/>
                 </svg>
             </button>
-            <div class="splide" id="slider2">
-                <div class="splide__track">
-                      <div class="splide__list">
-                          <img class="splide__slide" src="./img/image-product-1.jpg" alt="slider-image-1"/>
-                          <img class="splide__slide" src="./img/image-product-2.jpg" alt="slider-image-2"/>
-                          <img class="splide__slide" src="./img/image-product-3.jpg" alt="slider-image-3"/>
-                          <img class="splide__slide" src="./img/image-product-4.jpg" alt="slider-image-4"/>
-                      </div>
+            <div class="splide__wrapper">
+                <div class="splide" id="slider2">
+                    <div class="splide__track">
+                        <div class="splide__list">
+                            <picture class="splide__slide" >
+                                <source srcset="./img/image-product-1.webp" type="image/webp" />
+                                <img src="./img/image-product-1.jpg" alt="slider-image-1"/>
+                            </picture>
+                            <picture class="splide__slide">
+                                <source srcset="./img/image-product-2.webp" type="image/webp" />
+                                <img src="./img/image-product-2.jpg" alt="slider-image-2"/>
+                            </picture>
+                            <picture class="splide__slide">
+                                <source srcset="./img/image-product-3.webp" type="image/webp" />
+                                <img src="./img/image-product-3.jpg" alt="slider-image-3"/>
+                            </picture>
+                            <picture class="splide__slide">
+                                <source srcset="./img/image-product-4.webp" type="image/webp" />
+                                <img src="./img/image-product-4.jpg" alt="slider-image-4"/>
+                            </picture>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-thumbnail-images"></div>
+                <div id="modal-thumbnail-slider" class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="image">
+                                    <picture>
+                                        <source srcset="./img/image-product-1-thumbnail.webp" type="image/webp" />
+                                        <img src="./img/image-product-1-thumbnail.jpg" alt="thumbnail-image-1">
+                                    </picture>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="image">
+                                    <picture>
+                                        <source srcset="./img/image-product-2-thumbnail.webp" type="image/webp" />
+                                        <img src="./img/image-product-2-thumbnail.jpg" alt="thumbnail-image-2">
+                                    </picture>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="image">
+                                    <picture>
+                                        <source srcset="./img/image-product-3-thumbnail.webp" type="image/webp" />
+                                        <img src="./img/image-product-3-thumbnail.jpg" alt="thumbnail-image-3">
+                                    </picture>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="image">
+                                    <picture>
+                                        <source srcset="./img/image-product-4-thumbnail.webp" type="image/webp" />
+                                        <img src="./img/image-product-4-thumbnail.jpg" alt="thumbnail-image-4">
+                                    </picture>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
   
  <!-- SCRIPTS -->
+ <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/js/splide.min.js" 
+         integrity="sha384-OT+Ky8lkzzpgUgBXGnFSt7IDJ3Yy5D2WOmSX3f0EhJSRsoOtM8NujlMSe0kdARVX" 
+         crossorigin="anonymous">
+ </script>
  <script src="./src/js/functions.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/js/splide.min.js"></script>
+ 
 </body>
 </html>
