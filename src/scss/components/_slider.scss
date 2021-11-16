@@ -3,7 +3,11 @@
 .splide {
     position: relative;
     cursor: pointer;
-    max-width: 445px;
+
+    @media(min-width: $lg) {
+        max-width: 445px;
+    }
+    
 
     .splide__track {
         @media(min-width: $lg) {
@@ -136,7 +140,16 @@
     }
 }
 
+#thumbnail-slider {
+    display: none;
+
+    @media(min-width: $lg) {
+        display: block;    
+    }
+}
+
 #modal-thumbnail-slider {
+
     .splide__track {
         .splide__list {
             .splide__slide {
