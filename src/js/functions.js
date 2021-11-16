@@ -1,19 +1,40 @@
 // ------------------- START SPLIDE ------------------- //
 document.addEventListener("DOMContentLoaded", () => {
-    new Splide("#slider1").mount();
-    new Splide("#slider2").mount();
+    const slider_1 = new Splide("#slider1").mount();
+    const slider_2 = new Splide("#slider2").mount();
+    const slider_thumbnails = new Splide( '#thumbnail-slider', {
+        fixedWidth  : 90,
+        fixedHeight : 90,
+        gap         : 30,
+        rewind      : true,
+        pagination  : false,
+        cover       : true,
+        isNavigation: true
+      }).mount()
+      const modal_thumbnails = new Splide( '#modal-thumbnail-slider', {
+        fixedWidth  : 90,
+        fixedHeight : 90,
+        gap         : 30,
+        rewind      : true,
+        pagination  : false,
+        cover       : true,
+        isNavigation: true
+      }).mount()
+
+    slider_1.sync( slider_thumbnails );
+    slider_1.mount();
+
+    slider_2.sync( modal_thumbnails  )
+    slider_2.mount()
+
+    slider_thumbnails.mount();
+    modal_thumbnails.mount()
   });
 
 // ------------------- VARIABLES ------------------- //
-let productImage = document.querySelector('#slider1 img')
-let modalProductImage = document.querySelector('#slider2 img');
-let index = 0
-
-const thumbnailContainer = document.querySelector('.thumbnail-images')
-let thumbnailImg;
-let thumbnailImgDiv;
-let allModalDivs;
-
+let allImages = document.querySelectorAll('#slider1 img')
+let modalProductImage = document.querySelector('#slider2 .splide__slide');
+const thumbnailContainer = document.querySelectorAll('#thumbnail-slider .image')
 
 const burger = document.querySelector('.burger')
 const menu = document.querySelector('.mobile')
@@ -22,8 +43,7 @@ const lines = document.querySelectorAll('.line-1, .line-2, .line-3')
 
 
 const modalWindow = document.querySelector('.modal')
-const modalThumbnails = document.querySelector('.modal-thumbnail-images')
-let modalDiv;
+const modalThumbnails = document.querySelectorAll('#modal-thumbnail-slider .image img')
 let clicked = false
 const close = document.querySelector('.close')
 
@@ -35,114 +55,24 @@ const cartIcon = document.querySelector('.cart-icon,cart')
 const shoppingCart = document.querySelector('.shopping-cart')
 
 
-// ------------------- IMAGES ------------------- //
-const sliderImages = [
-    {
-        image: "product-1",
-        src: "./img/image-product-1.jpg"
-    },
-    {
-        image: "product-2",
-        src: "./img/image-product-2.jpg"
-    },
-    {
-        image: "product-3",
-        src: "./img/image-product-3.jpg"
-    },
-    {
-        image: "product-4",
-        src: "./img/image-product-4.jpg"
-    }
-]
-
-const thumbnails = [
-    {
-        image: "product-1",
-        src: "./img/image-product-1-thumbnail.jpg"
-    },
-    {
-        image: "product-2",
-        src: "./img/image-product-2-thumbnail.jpg"
-    },
-    {
-        image: "product-3",
-        src: "./img/image-product-3-thumbnail.jpg"
-    },
-    {
-        image: "product-4",
-        src: "./img/image-product-4-thumbnail.jpg"
-    }
-]
-
-// ------------------- THUMBNAIL IMAGES ------------------- //
- // Create img element for each image
- for (let index = 0; index < thumbnails.length; index++) {
-    let element = thumbnails[index];
-    
-    
-    thumbnailImgDiv = document.createElement('div')
-    thumbnailImg = document.createElement('img')
-    thumbnailImgDiv.classList.add('single-image')
-
-    // Set image source
-    thumbnailImg.setAttribute('src', element.src)
-
-    //Append img element to HTML
-    thumbnailContainer.appendChild(thumbnailImgDiv)
-    thumbnailImgDiv.appendChild(thumbnailImg)
-    
-}
-
-// Calling created elements
-let allThumbnailImgDivs = document.querySelectorAll('.single-image')
-let allThumbnailImages = document.querySelectorAll('.single-image img')
-
-
-// First image has active class
-allThumbnailImgDivs[0].classList.add('active')
-
-// ------------------- FUNCTION TO SHOW PRODUCT IMAGE ------------------- //
-const showProductImage = (evt) => {
-
-    index === evt.target
-    //Remove active state from all elements
-    allThumbnailImgDivs.forEach((elm) => {
-        elm.classList.remove('active')
-    })
-    
-    // Add active state to the clicked image
-    evt.target.parentElement.classList.add('active')
-
-    // Show clicked thumbnail in the product image container
-    let productImageSrc = evt.target.src.replace('-thumbnail', '')
-    productImage.setAttribute('src', productImageSrc)
-    //console.log(productImageSrc);
-}
-
-// Add click event for all images
-for (let index = 0; index < allThumbnailImgDivs.length; index++) {
-    allThumbnailImgDivs[index].addEventListener('click', showProductImage);
-}
-
+// ------------------- MODAL / LIGHTBOX ------------------- //
 // ------------------- FUNCTION TO SHOW MODAL PRODUCT IMAGE ------------------- //
-const showProductImageModal = (evt) => {
-    index === evt.target
-
-     // Iterate over modal div elements only after they have been created
-     if (allModalDivs) {
-        allModalDivs.forEach((elm) => {
-            elm.classList.remove('active')
+if(window.matchMedia("(min-width: 992px)").matches) {
+    for (let index = 0; index < allImages.length; index++) {
+        const element = allImages[index];
+            element.addEventListener('click', (evt) => {
+        
+            modalWindow.classList.add('show')
+            modalProductImage.src = evt.target.src
+            
         })
-    } 
-
-    // Add active state to the clicked image
-    evt.target.parentElement.classList.add('active')
-
-    // Show clicked thumbnail in the product image container
-    let productImageSrc = evt.target.src.replace('-thumbnail', '')
-    modalProductImage.setAttribute('src', productImageSrc)
+    }
 }
 
+// Close modal window
+close.addEventListener('click', () => {
+    modalWindow.classList.remove('show')
+})
 
 
 // ------------------- MOBILE MENU ------------------- //
@@ -157,49 +87,6 @@ burger.addEventListener('click', () => {
 })
 
 
-// ------------------- MODAL / LIGHTBOX ------------------- //
-
-// Open modal only when screen is 992px or wider
-if(window.matchMedia("(min-width: 992px)").matches) {
-
-    productImage.addEventListener('click', (event) => {
-        modalWindow.classList.add('show')
-        const clickedImage = event.target
-        document.querySelector('.modal img').setAttribute('src', clickedImage.src)
-        
-        if(!clicked) {
-            clicked = true
-            // Create img element for each modal thumbnail image
-            for (let index = 0; index < thumbnails.length; index++) {
-                const element = thumbnails[index];
-                modalDiv = document.createElement('div')
-                const img = document.createElement('img')
-                modalDiv.classList.add('single-image')
-
-                // Set image source
-                img.setAttribute('src', element.src)
-                
-                //Append img element to HTML
-                modalThumbnails.appendChild(modalDiv)
-                modalDiv.appendChild(img)
-
-                 // Add click event for all images
-                img.addEventListener('click', showProductImageModal)
-
-            } 
-        }
-        allModalDivs = document.querySelectorAll('.modal-thumbnail-images .single-image')
-        allModalDivs[0].classList.add('active')
-        clickedImage.addEventListener('click', showProductImageModal)
-    })
-    
-}
-
-// Close modal window
-close.addEventListener('click', () => {
-    modalWindow.classList.remove('show')
-})
-
 // ------------------- SHOPPING CART ------------------- //
 // Open shopping cart in the navigation
 cartIcon.addEventListener('click', () => {
@@ -208,7 +95,6 @@ cartIcon.addEventListener('click', () => {
 
 // Jide shopping cart also when clicked somewhere else on the page
 document.addEventListener('click', (event) => {
-    console.log(cartIcon);
     if (event.target !== cartIcon && 
         event.target.parentElement !== cartIcon) {
             shoppingCart.classList.remove('active')
@@ -288,4 +174,3 @@ addToCartButton.addEventListener('click', () => {
     }
     
 })
-
